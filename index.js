@@ -4,8 +4,6 @@ const config = require('./utils/config')
 
 const server = http.createServer(app)
 
-const PORT = process.env.PORT || config.PORT
-
-server.listen(PORT, () => {
+server.listen(config.PORT, () => {
   console.log(`Server running on port ${config.PORT}`)
 })
