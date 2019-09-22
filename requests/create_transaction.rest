@@ -1,0 +1,9 @@
+POST http://localhost:3003/api/transactions/
+Content-Type: application/json
+
+{
+    "transaction": "Visa Electron purchase",
+    "account": "FI70 0123 4567 89",
+    "name": "HESBURGER HKI K",
+    "amount": -9.40
+}
