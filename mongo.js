@@ -22,7 +22,11 @@ const transactionSchema = new mongoose.Schema({
       type: String,
       required: true
     },
-    beneficiary_remitter: {
+    name: {
+      type: String,
+      required: true
+    },
+    account: {
       type: String,
       required: true
     },
@@ -41,8 +45,9 @@ const transactionSchema = new mongoose.Schema({
 const Transaction = mongoose.model('Transaction', transactionSchema)
 
 const transaction = new Transaction({
-    transaction: "self service",
-    beneficiary_remitter: "Mitiku Wubetie",
+    transaction: "Self service",
+    account: "FI50 0123 4567 89",
+    name: "Mitiku Wubetie",
     amount: -100
 })
 

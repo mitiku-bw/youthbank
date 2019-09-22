@@ -9,7 +9,11 @@ const transactionSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  beneficiary_remitter: {
+  name: {
+    type: String,
+    required: true
+  },
+  account: {
     type: String,
     required: true
   },
@@ -18,7 +22,7 @@ const transactionSchema = new mongoose.Schema({
     required: true
   },
   reference: {
-    type: String
+    type: Number
   },
   message: {
     type: String

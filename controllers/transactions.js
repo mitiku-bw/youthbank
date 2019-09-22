@@ -25,7 +25,8 @@ transactionsRouter.post('/', async (request, response, next) => {
   const transaction = new Transaction({
     date: body.date,
     transaction: body.transaction,
-    beneficiary_remitter: body.name,
+    name: body.name,
+    account: body.account,
     amount: body.amount,
     reference: body.reference,
     message: body.message
@@ -50,17 +51,18 @@ transactionsRouter.delete('/:id', async (request, response, next) => {
 transactionsRouter.put('/:id', async (request, response, next) => {
   const body = request.body
 
-  const transactionRouter = {
+  const transaction = {
     date: body.date,
     transaction: body.transaction,
-    beneficiary_remitter: body.name,
+    name: body.name,
+    account: body.account,
     amount: body.amount,
     reference: body.reference,
     message: body.message
   }
 
   try {
-    const updatedTransaction = await Blog.findByIdAndUpdate(request.params.id, blog, { new: true })
+    const updatedTransaction = await Transaction.findByIdAndUpdate(request.params.id, transaction, { new: true })
     response.json(updatedTransaction.toJSON())
   } catch (exception){
     next(exception)
