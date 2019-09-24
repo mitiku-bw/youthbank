@@ -1,6 +1,7 @@
 const config = require('./utils/config')
 const express = require('express')
 const bodyParser = require('body-parser')
+const path = require('path')
 const app = express()
 const cors = require('cors')
 const transactionsRouter = require('./controllers/transactions')
@@ -20,9 +21,13 @@ mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology
 
 app.use(cors())
 //app.use(express.static('build'))
-app.use('/', express.static(__dirname + '/build'));
+// app.use('/', express.static(__dirname + '/build'));
+app.use(express.static(path.join(__dirname, 'build')))
 app.use(bodyParser.json())
 app.use(middleware.requestLogger)
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+})
 
 app.use('/api/transactions', transactionsRouter)
 
